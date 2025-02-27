@@ -1,38 +1,83 @@
+.login-page {
+  font-family: "Poppins", sans-serif !important;
+}
 
 .login-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    height: 100vh;
-    width: 100vw;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container {
+  background-color: hsl(0, 0%, 100%);
+  overflow: hidden;
+}
+
+.logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sobrescribir estilos de Bootstrap específicamente para el login */
+.login-page .btn-primary {
+  background-color: #084c74 !important;
+  border-color: #084c74 !important;
+}
+
+.login-page a {
+  color: #084c74 !important;
+  text-decoration: none;
+}
+
+.login-page a:hover {
+  text-decoration: underline;
+}
+
+/* Sobrescribir los estilos del form-floating para el login */
+.login-page .form-floating > .form-control,
+.login-page .form-floating > .form-select {
+  height: calc(3.5rem + 2px);
+  line-height: 1.25;
+}
+
+.login-page .form-floating > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  pointer-events: none;
+  border: 1px solid transparent;
+  transform-origin: 0 0;
+  transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+}
+
+.login-page .form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(8, 76, 116, 0.25) !important;
+  border-color: #084c74 !important;
+}
+
+/* Asegurarse de que las alertas se vean correctamente */
+.login-page .alert-danger {
+  color: #842029 !important;
+  background-color: #f8d7da !important;
+  border-color: #f5c2c7 !important;
+}
+
+@media (max-width: 575.98px) {
+  .login-container {
+    grid-template-columns: 100%;
   }
-  
-  .vertical-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
   .logo-container {
-    background-color: hsl(0, 0%, 100%);
+    display: none;
   }
-  
-  .logo-container img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .btn-primary {
-    background-color: #084c74;
-    border: #084c74;
-  }
-  a {
-    color: #084c74;
-  }
-  @media (max-width: 575.98px) {
-    .login-container {
-      grid-template-columns: 100%;
-    }
-    .logo-container {
-      display: none;
-    }
-  }
+}
