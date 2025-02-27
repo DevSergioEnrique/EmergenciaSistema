@@ -1,0 +1,38 @@
+
+.login-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .vertical-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-container {
+    background-color: hsl(0, 0%, 100%);
+  }
+  
+  .logo-container img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .btn-primary {
+    background-color: #084c74;
+    border: #084c74;
+  }
+  a {
+    color: #084c74;
+  }
+  @media (max-width: 575.98px) {
+    .login-container {
+      grid-template-columns: 100%;
+    }
+    .logo-container {
+      display: none;
+    }
+  }
