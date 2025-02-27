@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/style.css">
     
-    <!----===== Iconscout CSS ===== -->
+    <!-- Importar solo componentes necesarios de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap-utilities.min.css">
+    
+    <!-- Iconscout CSS -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    
     <!-- CSS de Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/style.css">
+    
+    <!-- Estilos para sobrescribir conflictos -->
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/custom.css">
+    
     <title>EMERGENCIA | HOSPITAL REGIONAL DE CAÑETE REZOLA</title>
     <style>
         button.cerrar-sesion {
