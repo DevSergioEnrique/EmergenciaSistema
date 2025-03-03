@@ -56,8 +56,8 @@
                 return $lastId; // Retorna el ID generado (ej: 15)
         
             } catch (PDOException $e) {
-                error_log("Error en insert(): " . $e->getMessage());
-                return false;
+                echo "Error en insert(): " . $e->getMessage();
+                die();
             }
         }
 

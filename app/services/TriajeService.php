@@ -112,4 +112,14 @@
 
             return $gravedades;
         }
+
+        public function registrarTriaje($params) {
+            $registrar = $this->triajeModel->registrarTriaje($params);
+
+            // if (!$motivosIngreso) {
+            //     return ["error" => "Los motivos de ingreso no fueron bien referenciados"];
+            // }
+
+            return $registrar;
+        }
     }

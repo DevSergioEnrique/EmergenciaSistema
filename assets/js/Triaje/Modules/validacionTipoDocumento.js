@@ -7,14 +7,37 @@ export function configurarValidaciones() {
 function actualizarTipoDocumento() {
     const nmroDocumento = document.getElementById('nmroDocumento');
     const paciente = document.getElementById('paciente');
+    const financiamiento = document.getElementById('financiamiento');
+    const alertaFinanciamiento = document.getElementById('alerta-financiamiento');
+
+    // Convertimos la colección de opciones en un array y recorremos con forEach
+    Array.from(financiamiento.options).forEach(opcion => {
+        if (opcion.value !== "" && opcion.disabled == true) {
+            opcion.disabled = false; // Vuelva a habilitar las opciones
+        }
+    });
+    
+    alertaFinanciamiento.style.display = "none";
+    alertaFinanciamiento.innerHTML = "";
+    financiamiento.value = "";
 
     if (this.value == 0) { // "Sin Documento"
-        nmroDocumento.value = ""; // Consultar lógica de negocio aquí
+        nmroDocumento.value = "";
         nmroDocumento.disabled = true;
         nmroDocumento.placeholder = "NN"; // Placeholder para "Sin Documento"
-
-        paciente.disabled = false;
+        
         paciente.value = "";
+        paciente.disabled = false;
+        paciente.placeholder = "Apellidos y nombres";
+
+        const opcionSIS = financiamiento.querySelector('option[value="2"]');
+        if (opcionSIS) {
+            opcionSIS.disabled = true; // Inhabilitar la opción
+        }
+
+        alertaFinanciamiento.style.display = "block"
+        alertaFinanciamiento.innerHTML = "No registrado en el SIS";
+        alertaFinanciamiento.style.backgroundColor = "black";
     } else {
         nmroDocumento.value = ""; // Restablecer el placeholder
         nmroDocumento.disabled = false;
@@ -23,6 +46,17 @@ function actualizarTipoDocumento() {
         paciente.disabled = true;
         paciente.placeholder = "Apellidos y Nombres";
         paciente.value = "";
+
+        if (Number(this.value) !== 1 && Number(this.value) !== 2) {
+            const opcionSIS = financiamiento.querySelector('option[value="2"]');
+            if (opcionSIS) {
+                opcionSIS.disabled = true; // Inhabilitar la opción
+            }
+
+            alertaFinanciamiento.style.display = "block"
+            alertaFinanciamiento.innerHTML = "No registrado en el SIS";
+            alertaFinanciamiento.style.backgroundColor = "black";
+        }
     }
 }
 

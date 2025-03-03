@@ -9,17 +9,20 @@
             <span class="text">Registro de Triajes</span>
         </div>
         <div class="container">
-            <form action="" method="POST" enctype="multipart/form-data" id="triajeForm" target="_blank">
+            <form action="<?=APP_URL?>/triaje/registrarTriaje" method="POST" id="triajeForm" target="_blank">
                 <div class="row">
+                    <!-- Campo Tipo de Documento -->
                     <div class="col-md-3 mb-3">
                         <label for="tipoDocumento" class="form-label fw-bold">Tipo de documento</label>
                         <select id="tipoDocumento" name="tipoDocumento" class="form-control" required>
                         </select>
                     </div>
+                    <!-- Número de Documento -->
                     <div class="col-md-3 mb-3">
                         <label for="nmroDocumento" class="form-label fw-bold">Nro de documento</label>
                         <input type="text" id="nmroDocumento" name="nmroDocumento" class="form-control" placeholder="Seleccione tipo de doc." disabled>
                     </div>
+                    <!-- Campo Paciente -->
                     <div class="col-md-6 mb-3">
                         <label for="paciente" class="form-label fw-bold">Paciente</label>
                         <input type="text" id="paciente" name="paciente" class="form-control" placeholder="Apellidos y nombres" disabled>
@@ -46,11 +49,13 @@
                     </div>
                 </div>
                 <div class="row">
+                    <!-- Campo Médico -->
                     <div class="col-md-6 mb-3">
                         <label for="medico" class="form-label fw-bold">Médico</label>
                         <input type="text" id="medico" name="medico" class="form-control" list="listaMedicos" placeholder="Primero seleccione un servicio" disabled required>
                         <datalist id="listaMedicos"></datalist>
                     </div>
+                    <!-- Campo Diagnóstico -->
                     <div class="col-md-6 mb-3">
                         <label for="diagnostico" class="form-label fw-bold">Diagnóstico</label>
                         <input type="text" id="diagnostico" name="diagnostico" class="form-control" list="listaDiagnosticos" placeholder="Seleccione" required>
@@ -58,16 +63,31 @@
                     </div>
                 </div>
                 <div class="row">
+                    <!-- Campo Tipo de Diagnóstico -->
                     <div class="col-md-4 mb-3">
                         <label for="tipoDiagnostico" class="form-label fw-bold">Tipo de diagnóstico</label>
                         <select id="tipoDiagnostico" name="tipoDiagnostico" class="form-control" placeholder="Seleccione" required>
                         </select>
                     </div>
+                    <!-- Campo Gravedad -->
                     <div class="col-md-4 mb-3">
                         <label for="gravedad" class="form-label fw-bold">Gravedad</label>
                         <select id="gravedad" name="gravedad" class="form-control" required>
                         </select>
                     </div>
+
+                    <style>
+                        .alerta { /* Alerta de estado de SIS */
+                            display: none; 
+                            text-align: center;
+                            color: white;
+                            padding: 5px;
+                            border-radius: 5px;
+                            font-weight: bold;
+                            margin-top: 10px;
+                        }
+                    </style>
+                    <!-- Campo Financiamiento -->
                     <div class="col-md-4 mb-3">
                         <label for="financiamiento" class="form-label fw-bold">Financiamiento</label>
                         <select id="financiamiento" name="financiamiento" class="form-control" required>
@@ -77,10 +97,10 @@
                             <option value="7">SALUD POL</option>
                             <option value="19">SOAT</option>
                         </select>
+                        <div id="alerta-financiamiento" class="alerta"></div>
                     </div>
                 </div>               
                 <div class="mb-2">
-                    <input type="hidden" name="accion" value="insertar_paciente">
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary btn-lg">💾 Guardar</button>
                         <button type="reset" class="btn btn-primary btn-lg"

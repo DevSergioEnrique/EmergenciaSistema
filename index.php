@@ -40,6 +40,12 @@ $router->get('/triaje/obtenerTiposDiagnostico', 'TriajeController@obtenerTiposDi
 $router->get('/triaje/obtenerGravedades', 'TriajeController@obtenerGravedades'); // Endpoint
 $router->get('/triaje/obtenerTiposFinanciamiento', 'TriajeController@obtenerTiposFinanciamiento'); // Endpoint
 
+$router->post('/triaje/registrarTriaje', 'TriajeController@registrarTriaje'); // Endpoint
+
+
+
+
+// Consumo de la API del SIS
 $router->get('/api-sis/consulta-sis/{tipoDocumento}/{nmroDocumento}', 'ApiController@consultarSis');
 
 // Rutas de Reportes

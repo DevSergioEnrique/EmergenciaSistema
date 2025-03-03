@@ -147,5 +147,63 @@
             $gravedades = $this->selectAll($sql);
 
             return $gravedades ?: ["error" => "Los tipos de gravedad no fueron bien referenciados"];
-        }   
+        }
+        
+        public function registrarTriaje(array $datos) {
+            try {
+                $sql = "INSERT INTO dbo.RegistroEmergencia (
+                        IdTipoDocumento, 
+                        NroDocPaciente, 
+                        Paciente, 
+                        IdFormaIngreso, 
+                        IdMotivoIngreso, 
+                        IdServicio, 
+                        IdMedico, 
+                        IdGravedad, 
+                        IdDiagnostico, 
+                        IdTipoDiagnostico, 
+                        IdFinanciamiento, 
+                        IdUsuario, 
+                        Fecha_Hora
+                    )
+                    VALUES (
+                        :tipoDocumento,          -- IdTipoDocumento (ejemplo: 1 = DNI)
+                        :nmroDocumento,          -- NroDocPaciente (ejemplo: número de DNI)
+                        :paciente,               -- Paciente (nombre completo)
+                        :formaIngreso,           -- IdFormaIngreso (ejemplo: 2 = Emergencia)
+                        :motivoIngreso,          -- IdMotivoIngreso (ejemplo: 3 = Dolor de cabeza)
+                        :servicio,               -- IdServicio (ejemplo: 4 = Urgencias)
+                        :medico,                 -- IdMedico (ejemplo: 5 = Dr. García)
+                        :gravedad,               -- IdGravedad (ejemplo: 1 = Leve)
+                        :diagnostico,            -- IdDiagnostico (ejemplo: 10 = Migraña)
+                        :tipoDiagnostico,        -- IdTipoDiagnostico (ejemplo: 2 = Presuntivo)
+                        :financiamiento,         -- IdFinanciamiento (ejemplo: 3 = SIS)
+                        :usuario,                -- IdUsuario (ejemplo: 6 = Usuario que registra)
+                        DEFAULT                  -- Fecha_Hora (usa el valor por defecto: GETDATE())
+                    )";
+
+                $params = [
+                    ':tipoDocumento'    => $datos['tipoDocumento'] ?? 0,
+                    ':nmroDocumento'    => $datos['nmroDocumento'] ?? 'NN',
+                    ':paciente'         => $datos['paciente'] ?? 'Anónimo',
+                    ':formaIngreso'     => $datos['formaIngreso'] ?? 1,
+                    ':motivoIngreso'    => $datos['motivoIngreso'] ?? 1,
+                    ':servicio'         => $datos['servicio'] ?? 1,
+                    ':medico'           => $datos['medico'] ?? 'Paquito',
+                    ':gravedad'         => $datos['gravedad'] ?? 1,
+                    ':diagnostico'      => $datos['diagnostico'] ?? '0000',
+                    ':tipoDiagnostico'  => $datos['tipoDiagnostico'] ?? 'R',
+                    ':financiamiento'   => $datos['financiamiento'] ?? 1,
+                    ':usuario'          => $datos['usuario'] ?? 1
+                ];
+
+                $registrar = $this->insert($sql, $params);
+        
+                return $registrar;
+
+            } catch (Exception $e) {
+                echo $e.Message("No se pudo insertar: ");
+                die();
+            }
+        }
     }

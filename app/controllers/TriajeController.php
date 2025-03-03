@@ -138,6 +138,33 @@
         }
 
         public function registrarTriaje(){
-            
+            try {
+
+                // Iniciar sesión solo si no está iniciada
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+
+                // Construir el array de parámetros
+                $params = [
+                    'tipoDocumento'   => strClean($_POST['tipoDocumento']), 
+                    'nmroDocumento'   => strClean($_POST['nmroDocumento']), 
+                    'paciente'        => strClean($_POST['paciente']), 
+                    'formaIngreso'    => strClean($_POST['formaIngreso']),
+                    'motivoIngreso'   => strClean($_POST['motivoIngreso']),
+                    'servicio'        => strClean($_POST['servicio']),
+                    'medico'          => strClean($_POST['medico']),
+                    'diagnostico'     => strClean($_POST['diagnostico']),
+                    'tipoDiagnostico' => strClean($_POST['tipoDiagnostico']),
+                    'gravedad'        => strClean($_POST['gravedad']),
+                    'financiamiento'  => strClean($_POST['financiamiento']),
+                    'usuario'         => $_SESSION['IdUsuario']
+                ];
+
+                $registrar = $this->triajeService->registrarTriaje($params);
+                echo json_encode($registrar, JSON_UNESCAPED_UNICODE);
+            } catch (Exception $e) {
+                return;
+            }
         }
     }

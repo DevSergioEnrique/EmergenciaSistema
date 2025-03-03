@@ -56,7 +56,6 @@
                     exit();
                 }
         
-                // Autenticar (debe usar password_verify() internamente)
                 $usuario = $this->loginService->autenticarUsuario($nombre, $password);
         
                 if (isset($usuario["error"])) {
@@ -71,7 +70,8 @@
         
                 // Guardar datos en sesión
                 $_SESSION['Usuario'] = $usuario['Usuario'];
-                $_SESSION['Clave'] = $usuario['Clave'];
+                $_SESSION['Clave'] = $usuario['DNI'];
+                $_SESSION['IdUsuario'] = $usuario['IdEmpleado'];
 
                 header('Location: ' . APP_URL . '/pacientes');
                 exit();

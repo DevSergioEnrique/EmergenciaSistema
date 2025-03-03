@@ -32,6 +32,7 @@ export function autocompletadoPaciente() {
 async function buscarPacientePorSIS(tipoDocumento, nmroDocumento) {
     const pacienteInput = document.getElementById('paciente');
     const financiamiento = document.getElementById('financiamiento');
+    const alertaFinanciamiento = document.getElementById('alerta-financiamiento');
 
     if (!pacienteInput) {
         console.error('No se encontró el campo "paciente".');
@@ -54,19 +55,59 @@ async function buscarPacientePorSIS(tipoDocumento, nmroDocumento) {
 
         // Si hay un error en la respuesta (paciente no encontrado)
         if (data.error) {
+            alertaFinanciamiento.innerHTML = "No registrado en el SIS";
+            alertaFinanciamiento.style.backgroundColor = "black";
+            alertaFinanciamiento.style.display = "block";
+
+            // Convertimos la colección de opciones en un array y recorremos con forEach
+            Array.from(financiamiento.options).forEach(opcion => {
+                if (opcion.value == "2") {
+                    opcion.disabled = true; // Deshabilitar solo la opción del SIS (value="2")
+                } else if (opcion.value == "") {
+                    opcion.disabled = true; // Mantener deshabilitado el placeholder (value="")
+                } else {
+                    opcion.disabled = false; // Habilitar el resto de las opciones (values 1, 3, 4)
+                }
+            });
+
             return false; // Retornar false para indicar que no se encontró
         }
 
         // Autocompletar el campo del paciente
         pacienteInput.value = data.nombreCompleto;
-        financiamiento.value = 2;
 
+        if (data.estado == "INACTIVO") {
+            alertaFinanciamiento.innerHTML = "SIS Inactivo";
+            alertaFinanciamiento.style.backgroundColor = "red";
+            alertaFinanciamiento.style.display = "block";
+
+            financiamiento.value = "";
+
+            const opcionSIS = financiamiento.querySelector('option[value="2"]');
+            if (opcionSIS) {
+                opcionSIS.disabled = true; // Habilitar la opción
+            }
+            return true;
+        }
+
+        const opcionSIS = financiamiento.querySelector('option[value="2"]');
+        if (opcionSIS.disabled = true) {
+            opcionSIS.disabled = false; // Habilitar la opción
+        }
+
+        financiamiento.value = "2"; 
+
+        alertaFinanciamiento.innerHTML = "SIS Activo";
+        alertaFinanciamiento.style.backgroundColor = "green";
+        alertaFinanciamiento.style.display = "block";
+    
         // Convertimos la colección de opciones en un array y recorremos con forEach
         Array.from(financiamiento.options).forEach(opcion => {
             if (opcion.value !== "2" && opcion.value !== "") {
                 opcion.disabled = true; // Deshabilita las opciones que no son "SIS"
             }
         });
+
         return true; // Retornar true para indicar que se encontró
 
     } catch (error) {

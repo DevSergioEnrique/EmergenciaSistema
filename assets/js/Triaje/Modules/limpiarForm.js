@@ -9,6 +9,8 @@ export function limpiarFormulario() {
     const gravedad = document.getElementById('gravedad');
     const financiamiento = document.getElementById('financiamiento');
 
+    
+
     // Inputs
     const nmroDocumento = document.getElementById('nmroDocumento');
     const paciente = document.getElementById('paciente');
@@ -25,6 +27,8 @@ export function limpiarFormulario() {
 
 // Función para limpiar el formulario
 function limpiarForm() {
+    // Alertas
+    const alertaFinanciamiento = document.getElementById('alerta-financiamiento');
 
     // Selects
     const selects = [tipoDocumento, formaIngreso, motivoIngreso, servicio, tipoDiagnostico, gravedad, financiamiento];
@@ -52,8 +56,11 @@ function limpiarForm() {
     listaDiagnosticos.innerHTML = "";
 
     // Financiamiento
+    alertaFinanciamiento.style.display = "none";
+    alertaFinanciamiento.innerHTML = "";
+
     Array.from(financiamiento.options).forEach(opcion => {
-        if (opcion.value !== "2" && opcion.value !== "") {
+        if (opcion.value !== "" && opcion.disabled == true) {
             opcion.disabled = false; // Vuelve a habilitar las opciones que no son "SIS"
         }
     });
