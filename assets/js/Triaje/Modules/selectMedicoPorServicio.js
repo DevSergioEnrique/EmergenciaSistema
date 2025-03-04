@@ -1,37 +1,64 @@
+// export function buscarMedicosPorServicio() {
+//     const servicio = document.getElementById("servicio");
+//     const inputMedico = document.getElementById("medico");
+//     const listaMedicos = document.getElementById("listaMedicos");
+
+//     // Evento al cambiar el servicio
+//     servicio.addEventListener("change", () => {
+//         // Habilitar el campo de búsqueda y cambiar el placeholder
+//         inputMedico.value = ""; // Limpiar el input
+//         inputMedico.disabled = false;
+//         inputMedico.placeholder = "Buscar médico...";
+//         listaMedicos.innerHTML = ""; // Limpiar la lista de médicos
+//     });
+
+//     // Validar que solo se ingresen letras (incluyendo acentos y ñ)
+//     inputMedico.addEventListener("input", () => {
+//         // Expresión regular para permitir solo letras, espacios y caracteres con acentos
+//         const regex = /[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g;
+//         // Reemplazar cualquier caracter no permitido
+//         inputMedico.value = inputMedico.value.replace(regex, '');
+//     });
+
+//     // Aplicar debounce a la función buscarMedicos
+//     const busquedaDebounce = debounce(buscarMedicos, 750);
+
+//     // Evento input en el campo de búsqueda
+//     inputMedico.addEventListener("input", (event) => {
+//         const termino = event.target.value.trim(); // Obtener el término de búsqueda
+//         const idServicio = servicio.value; // Obtener el ID del servicio
+
+//         if (termino.length >= 1) { // Solo buscar si el término tiene al menos 2 caracteres
+//             busquedaDebounce(termino, idServicio);
+//         } else {
+//             listaMedicos.innerHTML = ""; // Limpiar la lista si el término es muy corto
+//         }
+//     });
+// }
+import { obtenerDatos } from "./selectsNoDinamicos.js";
+
 export function buscarMedicosPorServicio() {
     const servicio = document.getElementById("servicio");
-    const inputMedico = document.getElementById("medico");
-    const listaMedicos = document.getElementById("listaMedicos");
+    const selectMedico = document.getElementById("medico"); // Corregido a 'medico'
 
-    // Evento al cambiar el servicio
     servicio.addEventListener("change", () => {
-        // Habilitar el campo de búsqueda y cambiar el placeholder
-        inputMedico.value = ""; // Limpiar el input
-        inputMedico.disabled = false;
-        inputMedico.placeholder = "Buscar médico...";
-        listaMedicos.innerHTML = ""; // Limpiar la lista de médicos
-    });
+        const idServicio = servicio.value;
+        selectMedico.innerHTML = '<option value="" selected disabled>Cargando médicos...</option>';
+        selectMedico.disabled = true;
+        console.log(idServicio);
+        
 
-    // Validar que solo se ingresen letras (incluyendo acentos y ñ)
-    inputMedico.addEventListener("input", () => {
-        // Expresión regular para permitir solo letras, espacios y caracteres con acentos
-        const regex = /[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g;
-        // Reemplazar cualquier caracter no permitido
-        inputMedico.value = inputMedico.value.replace(regex, '');
-    });
-
-    // Aplicar debounce a la función buscarMedicos
-    const busquedaDebounce = debounce(buscarMedicos, 750);
-
-    // Evento input en el campo de búsqueda
-    inputMedico.addEventListener("input", (event) => {
-        const termino = event.target.value.trim(); // Obtener el término de búsqueda
-        const idServicio = servicio.value; // Obtener el ID del servicio
-
-        if (termino.length >= 1) { // Solo buscar si el término tiene al menos 2 caracteres
-            busquedaDebounce(termino, idServicio);
+        if (idServicio) {
+            obtenerDatos(
+                `http://localhost/emergencia/triaje/obtenerMedicos/${idServicio}`,
+                'medico',
+                'IdMedico',
+                'Medicos'
+            );
+            selectMedico.disabled = false;
         } else {
-            listaMedicos.innerHTML = ""; // Limpiar la lista si el término es muy corto
+            selectMedico.innerHTML = '<option value="" selected disabled>Seleccione un servicio primero</option>';
+            selectMedico.disabled = true;
         }
     });
 }

@@ -1,0 +1,239 @@
+/* 
+* Estilos para el formulario de triaje modernizado
+* Este archivo contiene estilos específicos para la vista de triaje
+* y utiliza la clase .triaje-moderno como namespace para evitar conflictos
+*/
+
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --accent-color: #f59e0b;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --background-light: #f8fafc;
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+}
+
+body.dark {
+  --background-light: #1e1e1e;
+}
+
+/* Contenedor principal con namespace para evitar conflictos */
+.triaje-moderno {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+}
+
+.triaje-moderno .card {
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  border: none;
+  overflow: hidden;
+  background-color: var(--panel-color);
+  margin-bottom: 2rem;
+}
+
+.triaje-moderno .card-header {
+  background: var(--primary-color);
+  color: white;
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  position: relative;
+  border-bottom: none;
+}
+
+.triaje-moderno .card-header:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
+}
+
+.triaje-moderno .card-body {
+  padding: 2rem;
+}
+
+/* Secciones del formulario */
+.triaje-moderno .section-title {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  position: relative;
+}
+
+.triaje-moderno .section-title:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+/* Campos de formulario */
+.triaje-moderno .form-field {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.triaje-moderno .form-label {
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.triaje-moderno .form-control,
+.triaje-moderno .form-select,
+.triaje-moderno .select2-container--default .select2-selection--single {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  transition: all var(--transition-speed) ease;
+  background-color: var(--panel-color);
+  color: var(--text-color);
+}
+
+body.dark .triaje-moderno .form-control,
+body.dark .triaje-moderno .form-select,
+body.dark .triaje-moderno .select2-container--default .select2-selection--single {
+  border-color: #4d4c4c;
+  background-color: var(--panel-color);
+}
+
+.triaje-moderno .form-control:focus,
+.triaje-moderno .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.triaje-moderno .form-control:disabled,
+.triaje-moderno .form-control[readonly] {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--black-light-color);
+  border-color: #e2e8f0;
+}
+
+body.dark .triaje-moderno .form-control:disabled,
+body.dark .triaje-moderno .form-control[readonly] {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Input con iconos */
+.triaje-moderno .input-group-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--black-light-color);
+  pointer-events: none;
+}
+
+/* Textos de ayuda y validación */
+.triaje-moderno .hint-text {
+  font-size: 0.8rem;
+  color: var(--black-light-color);
+  margin-top: 0.25rem;
+}
+
+.triaje-moderno .validation-message {
+  font-size: 0.8rem;
+  color: var(--danger-color);
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.triaje-moderno .input-error {
+  border-color: var(--danger-color) !important;
+}
+
+/* Botones */
+.triaje-moderno .btn-primary {
+  background: var(--primary-color);
+  border: none;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all var(--transition-speed) ease;
+  color: white;
+}
+
+.triaje-moderno .btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.triaje-moderno .btn-outline-secondary {
+  border: 2px solid #cbd5e1;
+  color: var(--text-color);
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.triaje-moderno .btn-outline-secondary:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.dark .triaje-moderno .btn-outline-secondary {
+  border-color: #4d4c4c;
+}
+
+body.dark .triaje-moderno .btn-outline-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Indicador de carga */
+.triaje-moderno .loader {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: none;
+  margin-left: 0.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Integración con Select2 */
+.triaje-moderno .select2-container {
+  width: 100% !important;
+}
+
+.triaje-moderno .select2-container--default .select2-selection--single {
+  height: auto;
+  padding: 0.5rem;
+}
+
+.triaje-moderno .select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.triaje-moderno .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 100%;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .triaje-moderno .card-body {
+      padding: 1.5rem;
+  }
+  
+  .triaje-moderno .btn-primary,
+  .triaje-moderno .btn-outline-secondary {
+      padding: 0.6rem 1.5rem;
+  }
+}

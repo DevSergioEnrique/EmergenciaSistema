@@ -1,0 +1,61 @@
+/* ===== Variables Globales ===== */
+:root {
+    /* Colores principales */
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --accent-color: #f59e0b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    
+    /* Colores de texto y fondo */
+    --text-color: #334155;
+    --text-muted: #64748b;
+    --background-light: #f8fafc;
+    --panel-color: #fff;
+    --border-color: #e2e8f0;
+    
+    /* Colores para el modo oscuro */
+    --dark-background: #1e293b;
+    --dark-panel: #0f172a;
+    --dark-text: #e2e8f0;
+    --dark-border: #334155;
+    --dark-muted: #94a3b8;
+    
+    /* UI Components */
+    --box1-color: #4da3ff;
+    --box2-color: #ffe6ac;
+    --box3-color: #e7d1fc;
+    --title-icon-color: #fff;
+    --toggle-color: #ddd;
+    
+    /* Dimensiones y Espaciado */
+    --sidebar-width: 250px;
+    --sidebar-closed-width: 73px;
+    --border-radius: 12px;
+    --input-radius: 8px;
+    --transition-speed: 0.3s;
+    
+    /* Fuentes */
+    --font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    
+    /* Transiciones */
+    --tran-05: all 0.5s ease;
+    --tran-03: all 0.3s ease;
+    --tran-02: all 0.2s ease;
+}
+  
+/* Variables para el modo oscuro */
+body.dark {
+    --primary-color: #3b82f6;
+    --panel-color: var(--dark-panel);
+    --text-color: var(--dark-text);
+    --text-muted: var(--dark-muted);
+    --background-light: var(--dark-background);
+    --border-color: var(--dark-border);
+    --toggle-color: #fff;
+    --box1-color: #3a3b3c;
+    --box2-color: #3a3b3c;
+    --box3-color: #3a3b3c;
+    --title-icon-color: #ccc;
+}

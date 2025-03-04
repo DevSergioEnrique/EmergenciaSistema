@@ -9,7 +9,12 @@
 
 /* ===== Colores y Transiciones ===== */
 :root {
-  --primary-color: #0e4bf1;
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --accent-color: #f59e0b;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --background-light: #f8fafc;
   --panel-color: #fff;
   --text-color: #000;
   --black-light-color: #707070;
@@ -23,6 +28,8 @@
   --tran-05: all 0.5s ease;
   --tran-03: all 0.3s ease;
   --tran-02: all 0.2s ease;
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
 }
 
 /* ===== Modo Oscuro ===== */
