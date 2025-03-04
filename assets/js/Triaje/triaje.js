@@ -28,6 +28,13 @@ export async function listarServicios() {
     });
 }
 
+export async function obtenerDiagnostico() {
+    document.getElementById('diagnostico').addEventListener('click', function() {
+        if (this.options.length > 1) return;
+        obtenerDatos('http://localhost/emergencia/triaje/obtenerDiagnosticos', 'diagnostico', 'IdDiagnostico', 'Descripcion');
+    });
+}
+
 export async function listarTiposDiagnosticos() {
     document.getElementById('tipoDiagnostico').addEventListener('click', function() {
         if (this.options.length > 1) return;

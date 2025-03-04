@@ -1,4 +1,5 @@
 <?php
+    $pageCss = ['pages/triaje-moderno.css'];
     getHeader();
 ?>
 
@@ -8,110 +9,137 @@
             <i class="uil uil-file-search-alt"></i>
             <span class="text">Registro de Triajes</span>
         </div>
-        <div class="container">
-            <form action="<?=APP_URL?>/triaje/registrarTriaje" method="POST" id="triajeForm" target="_blank">
-                <div class="row">
-                    <!-- Campo Tipo de Documento -->
-                    <div class="col-md-3 mb-3">
-                        <label for="tipoDocumento" class="form-label fw-bold">Tipo de documento</label>
-                        <select id="tipoDocumento" name="tipoDocumento" class="form-control" required>
-                        </select>
-                    </div>
-                    <!-- Número de Documento -->
-                    <div class="col-md-3 mb-3">
-                        <label for="nmroDocumento" class="form-label fw-bold">Nro de documento</label>
-                        <input type="text" id="nmroDocumento" name="nmroDocumento" class="form-control" placeholder="Seleccione tipo de doc." disabled>
-                    </div>
-                    <!-- Campo Paciente -->
-                    <div class="col-md-6 mb-3">
-                        <label for="paciente" class="form-label fw-bold">Paciente</label>
-                        <input type="text" id="paciente" name="paciente" class="form-control" placeholder="Apellidos y nombres" disabled>
-                    </div>
+        
+        <!-- Contenedor con clase triaje-moderno para namespacing CSS -->
+        <div class="triaje-moderno">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <i class="fas fa-user-injured me-2"></i>
+                    Registro de Triaje Rápido
                 </div>
-                <div class="row">
-                    <!-- Campo: Forma de Ingreso -->
-                    <div class="col-md-4 mb-3">
-                        <label for="formaIngreso" class="form-label fw-bold">Forma de ingreso</label>
-                        <select id="formaIngreso" name="formaIngreso" class="form-control" required>
-                        </select>
-                    </div>
-                    <!-- Campo: Motivo de Ingreso -->
-                    <div class="col-md-4 mb-3">
-                        <label for="motivoIngreso" class="form-label fw-bold">Motivo de ingreso</label>
-                        <select id="motivoIngreso" name="motivoIngreso" class="form-control" required>
-                        </select>
-                    </div>
-                    <!-- Campo: Servicio -->
-                    <div class="col-md-4 mb-3">
-                        <label for="servicio" class="form-label fw-bold">Servicio</label>
-                        <select id="servicio" name="servicio" class="form-control" placeholder="Seleccione" required>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- Campo Médico -->
-                    <div class="col-md-6 mb-3">
-                        <label for="medico" class="form-label fw-bold">Médico</label>
-                        <input type="text" id="medico" name="medico" class="form-control" list="listaMedicos" placeholder="Primero seleccione un servicio" disabled required>
-                        <datalist id="listaMedicos"></datalist>
-                    </div>
-                    <!-- Campo Diagnóstico -->
-                    <div class="col-md-6 mb-3">
-                        <label for="diagnostico" class="form-label fw-bold">Diagnóstico</label>
-                        <input type="text" id="diagnostico" name="diagnostico" class="form-control" list="listaDiagnosticos" placeholder="Seleccione" required>
-                        <datalist id="listaDiagnosticos"></datalist>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- Campo Tipo de Diagnóstico -->
-                    <div class="col-md-4 mb-3">
-                        <label for="tipoDiagnostico" class="form-label fw-bold">Tipo de diagnóstico</label>
-                        <select id="tipoDiagnostico" name="tipoDiagnostico" class="form-control" placeholder="Seleccione" required>
-                        </select>
-                    </div>
-                    <!-- Campo Gravedad -->
-                    <div class="col-md-4 mb-3">
-                        <label for="gravedad" class="form-label fw-bold">Gravedad</label>
-                        <select id="gravedad" name="gravedad" class="form-control" required>
-                        </select>
-                    </div>
+                <div class="card-body">
+                    <form action="" method="POST" enctype="multipart/form-data" id="triajeForm" target="_blank">
+                        <div class="row g-4">
+                            <!-- Columna Izquierda - Datos del Paciente -->
+                            <div class="col-lg-6">
+                                <div class="section-title">Datos del Paciente</div>
+                                
+                                <div class="form-field">
+                                    <label for="tipoDocumento" class="form-label">Tipo de documento <span class="text-danger">*</span></label>
+                                    <select id="tipoDocumento" name="tipoDocumento" class="form-select" required>
+                                        <!-- Se poblará mediante JavaScript -->
+                                    </select>
+                                </div>
+                                
+                                <div class="form-field">
+                                    <label for="nmroDocumento" class="form-label">Nro de documento <span class="text-danger">*</span></label>
+                                    <input type="text" id="nmroDocumento" name="nmroDocumento" class="form-control" placeholder="Seleccione tipo de doc." disabled>
+                                    <div class="hint-text">Ingrese el número sin espacios ni caracteres especiales</div>
+                                </div>
+                                
+                                <div class="form-field">
+                                    <label for="paciente" class="form-label">Paciente</label>
+                                    <input type="text" id="paciente" name="paciente" class="form-control" placeholder="Apellidos y nombres" disabled>
+                                </div>
+                                
+                                <div class="form-field">
+                                    <label for="financiamiento" class="form-label">Financiamiento <span class="text-danger">*</span></label>
+                                    <select id="financiamiento" name="financiamiento" class="form-select" required>
+                                        <option value="" selected disabled>Seleccione</option>
+                                        <option value="1">PARTICULAR</option>
+                                        <option value="2">SIS</option>
+                                        <option value="7">SALUD POL</option>
+                                        <option value="19">SOAT</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Columna Derecha - Información Médica -->
+                            <div class="col-lg-6">
+                                <div class="section-title">Información Médica</div>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-field">
+                                            <label for="formaIngreso" class="form-label">Forma de ingreso <span class="text-danger">*</span></label>
+                                            <select id="formaIngreso" name="formaIngreso" class="form-select" required>
+                                                <!-- Se poblará mediante JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-field">
+                                            <label for="motivoIngreso" class="form-label">Motivo de ingreso <span class="text-danger">*</span></label>
+                                            <select id="motivoIngreso" name="motivoIngreso" class="form-select" required>
+                                                <!-- Se poblará mediante JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-field">
+                                            <label for="servicio" class="form-label">Servicio <span class="text-danger">*</span></label>
+                                            <select id="servicio" name="servicio" class="form-select" required>
+                                                <!-- Se poblará mediante JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-field">
+                                            <label for="medico" class="form-label">Médico <span class="text-danger">*</span></label>
+                                            <select id="medico" name="medico" class="form-select" disabled required>
+                                                <option value="" selected disabled>Primero seleccione un servicio</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <style>
-                        .alerta { /* Alerta de estado de SIS */
-                            display: none; 
-                            text-align: center;
-                            color: white;
-                            padding: 5px;
-                            border-radius: 5px;
-                            font-weight: bold;
-                            margin-top: 10px;
-                        }
-                    </style>
-                    <!-- Campo Financiamiento -->
-                    <div class="col-md-4 mb-3">
-                        <label for="financiamiento" class="form-label fw-bold">Financiamiento</label>
-                        <select id="financiamiento" name="financiamiento" class="form-control" required>
-                            <option value="" selected disabled>Seleccione</option>
-                            <option value="1">PARTICULAR</option>
-                            <option value="2">SIS</option>
-                            <option value="7">SALUD POL</option>
-                            <option value="19">SOAT</option>
-                        </select>
-                        <div id="alerta-financiamiento" class="alerta"></div>
-                    </div>
-                </div>               
-                <div class="mb-2">
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-primary btn-lg">💾 Guardar</button>
-                        <button type="reset" class="btn btn-primary btn-lg"
-                            aria-label="Limpiar formulario" id="limpiarForm">🧹 Limpiar</button>
-                    </div>
+                                <div class="form-field">
+                                    <label for="diagnostico" class="form-label">Diagnóstico <span class="text-danger">*</span></label>
+                                    <input type="text" id="diagnostico" name="diagnostico" class="form-control" list="listaDiagnosticos" placeholder="Seleccione" required>
+                                    <datalist id="listaDiagnosticos"></datalist>
+                                    <div class="hint-text">Máximo 200 caracteres</div>
+                                </div>
+                                
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-field">
+                                            <label for="tipoDiagnostico" class="form-label">Tipo de diagnóstico <span class="text-danger">*</span></label>
+                                            <select id="tipoDiagnostico" name="tipoDiagnostico" class="form-select" required>
+                                                <!-- Se poblará mediante JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-field">
+                                            <label for="gravedad" class="form-label">Gravedad <span class="text-danger">*</span></label>
+                                            <select id="gravedad" name="gravedad" class="form-select" required>
+                                                <!-- Se poblará mediante JavaScript -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-center gap-3 mt-5">
+                            <input type="hidden" name="accion" value="insertar_paciente">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i>Guardar
+                                <span class="loader"></span>
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary" id="limpiarForm">
+                                <i class="fas fa-eraser me-2"></i>Limpiar
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <br></br>
-            </form>
+            </div>
         </div>
     </div>
 </div>
 
 <iframe name="printIframe" style="display: none;"></iframe>
-<script type ="module" src="<?= APP_URL ?>/assets/js/Triaje/main.js"></script>
+<script type="module" src="<?= APP_URL ?>/assets/js/Triaje/main.js"></script>

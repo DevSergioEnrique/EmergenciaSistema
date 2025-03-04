@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Emergencia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <!-- Utilizar versión completa de Bootstrap solo para la pantalla de login -->
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+    <!-- Estilos personalizados de login -->
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/login.css">
+    <!-- Estilos para sobrescribir conflictos -->
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/custom.css">
 </head>
-<body>
+<body class="login-page">
     <div class="login-container">
         <div class="logo-container vertical-center">
-            <img class="logo-container vertical-center" src="<?= APP_URL ?>/assets/img/portada.jpg">
+            <img src="<?= APP_URL ?>/assets/img/portada.jpg">
         </div>
-        <div class=" vertical-center text-center">
+        <div class="vertical-center text-center">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
