@@ -7,28 +7,34 @@
 
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- CSS Base y Variables -->
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/variables.css">
     
-    <!-- Bootstrap CSS Core - Solo componentes esenciales -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap-utilities.min.css">
+    <!-- Fuentes -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap">
     
-    <!-- Font Awesome Icons - Carga completa para asegurar funcionamiento -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Iconscout CSS -->
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     
-    <!-- Select2 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap-utilities.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
     
-    <!-- Base Bootstrap Components - Cargados después del grid para evitar conflictos con la navegación -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     
-    <!-- Estilos personalizados - Aseguramos que se carguen DESPUÉS de Bootstrap -->
+    <!-- Estilos -->
     <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/style.css">
-    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/custom.css">
+    <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/components/sidebar.css">
     
-    <!-- Estilos específicos por página - Se cargarán desde cada vista cuando sea necesario -->
+    <!-- Estilos específicos -->
     <?php if (isset($pageCss) && !empty($pageCss)): ?>
         <?php foreach ($pageCss as $cssFile): ?>
             <link rel="stylesheet" href="<?= APP_URL ?>/assets/css/<?= $cssFile ?>">
@@ -37,14 +43,15 @@
     <title>EMERGENCIA | HOSPITAL REGIONAL DE CAÑETE REZOLA</title>
 </head>
 <body>
-    <!-- Scripts cargados antes del contenido para asegurar disponibilidad -->
+    <!-- Scripts principales -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     
+    <!-- Sidebar Navigation -->
     <nav>
         <div class="logo-name">
             <div class="logo-image">
-                <img src="<?= APP_URL ?>/assets/img/logo1.jpg" alt="Logo Hospital">
+                <img src="<?= APP_URL ?>/assets/img/logo1.jpg" alt="Logo">
             </div>
             <span class="logo_name">Emergencia</span>
         </div>
