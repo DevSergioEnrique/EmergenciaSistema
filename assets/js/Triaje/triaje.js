@@ -1,4 +1,4 @@
-import { obtenerDatos } from "./Modules/selectsNoDinamicos.js";
+import { obtenerDatos, obtenerDatosSelect2 } from "./Modules/selectsNoDinamicos.js";
 
 export async function listarTiposDocumento() {
     document.getElementById('tipoDocumento').addEventListener('click', function() {
@@ -25,13 +25,34 @@ export async function listarServicios() {
     document.getElementById('servicio').addEventListener('click', function() {
         if (this.options.length > 1) return;
         obtenerDatos('http://localhost/emergencia/triaje/obtenerServicios', 'servicio', 'IdServicio', 'Nombre');
+        
     });
 }
 
 export async function obtenerDiagnostico() {
-    document.getElementById('diagnostico').addEventListener('click', function() {
+    const selectElement = document.getElementById('diagnostico');
+    
+    selectElement.addEventListener('click', async function() {
         if (this.options.length > 1) return;
-        obtenerDatos('http://localhost/emergencia/triaje/obtenerDiagnosticos', 'diagnostico', 'IdDiagnostico', 'Descripcion');
+
+        await obtenerDatos('http://localhost/emergencia/triaje/obtenerDiagnosticos', 'diagnostico', 'IdDiagnostico', 'Descripcion');
+        
+        // Initialize Select2 after data is loaded
+        $(this).select2({
+            theme: 'bootstrap-5',
+            processResults: function(data) {
+                return {
+                    results: data.map(item => {
+                        return {
+                            id: item.IdDiagnostico,
+                            text: [item.Descripcion, item.Codigo]
+                        };
+                    })
+                };
+            },
+            placeholder: 'Seleccione un diagnóstico',
+            allowClear: true,
+        });
     });
 }
 

@@ -56,6 +56,7 @@ export function buscarMedicosPorServicio() {
                 'Medicos'
             );
             selectMedico.disabled = false;
+            console.log(`dato seleccionado: ${selectMedico.value}`);
         } else {
             selectMedico.innerHTML = '<option value="" selected disabled>Seleccione un servicio primero</option>';
             selectMedico.disabled = true;
