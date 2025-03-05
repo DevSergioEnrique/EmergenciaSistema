@@ -1,0 +1,241 @@
+/* ===== Estilos Base ===== */
+
+/* Reseteo y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+  
+body {
+    background-color: var(--background-light);
+    color: var(--text-color);
+    transition: var(--tran-05);
+    min-height: 100vh;
+}
+  
+/* Contenedor principal para todos los formularios */
+.container {
+    width: 85%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+  
+.container-reporte {
+    width: 17%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+  
+.container-update {
+    width: 70%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+  
+.container-update-user {
+    width: 40%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Boxes para dashboard */
+  .dash-content .boxes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+  
+.dash-content .boxes .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    width: calc(100% / 3 - 15px);
+    padding: 15px 20px;
+    background-color: var(--box1-color);
+    transition: var(--tran-05);
+}
+  
+.boxes .box i {
+    font-size: 35px;
+    color: var(--text-color);
+}
+  
+.boxes .box .text {
+    white-space: nowrap;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+  
+.boxes .box .number {
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  .boxes .box.box2 {
+    background-color: var(--box2-color);
+  }
+  
+  .boxes .box.box3 {
+    background-color: var(--box3-color);
+  }
+  
+  /* Tablas de actividad */
+  .dash-content .activity .activity-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .activity-data .data {
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+  }
+  
+  .activity-data .data-title {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  .activity-data .data .data-list {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 20px;
+    white-space: nowrap;
+    color: var(--text-color);
+  }
+  
+  .activity-data table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--panel-color);
+  }
+  
+  .activity-data th,
+  .activity-data td {
+    padding: 12px 15px;
+    text-align: left;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .activity-data tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  body.dark .activity-data tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  /* Responsive para boxes y tablas */
+  @media (max-width: 780px) {
+    .dash-content .boxes .box {
+      width: calc(100% / 2 - 15px);
+      margin-top: 15px;
+    }
+    
+    .activity-data {
+      overflow-x: auto;
+    }
+}
+
+@media (max-width: 560px) {
+    .dash-content .boxes .box {
+      width: 100%;
+    }
+}
+
+/* Modo oscuro */
+body.dark {
+    background-color: var(--dark-background);
+}
+
+body.dark .activity-data table {
+    background-color: var(--panel-color);
+}
+  
+/* Utilitarios adicionales */
+.text-center {
+    text-align: center;
+}
+
+.text-danger {
+    color: var(--danger-color);
+}
+
+.mt-5 {
+    margin-top: 3rem;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-3 {
+    gap: 1rem;
+}
+  
+.me-2 {
+    margin-right: 0.5rem;
+}
+
+/* Bootstrap-like grid customized */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+
+.row > * {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    margin-top: var(--bs-gutter-y);
+}
+
+.g-3 {
+    --bs-gutter-y: 1rem;
+    --bs-gutter-x: 1rem;
+}
+  
+.g-4 {
+    --bs-gutter-y: 1.5rem;
+    --bs-gutter-x: 1.5rem;
+}

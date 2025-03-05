@@ -7,32 +7,24 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* ===== Colores y Transiciones ===== */
-:root {
-  --primary-color: #2563eb;
-  --primary-hover: #1d4ed8;
-  --accent-color: #f59e0b;
-  --success-color: #10b981;
-  --danger-color: #ef4444;
-  --background-light: #f8fafc;
-  --panel-color: #fff;
-  --text-color: #000;
-  --black-light-color: #707070;
-  --border-color: #e6e5e5;
-  --toggle-color: #ddd;
-  --box1-color: #4da3ff;
-  --box2-color: #ffe6ac;
-  --box3-color: #e7d1fc;
-  --title-icon-color: #fff;
-
-  --tran-05: all 0.5s ease;
-  --tran-03: all 0.3s ease;
-  --tran-02: all 0.2s ease;
-  --border-radius: 12px;
-  --transition-speed: 0.3s;
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-color);
+  transition: var(--tran-05);
+  margin: 0;
+  padding: 0;
+}
+.cerrar-sesion {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer; 
 }
 
-/* ===== Modo Oscuro ===== */
 body.dark {
   --primary-color: #3a3b3c;
   --panel-color: #242526;

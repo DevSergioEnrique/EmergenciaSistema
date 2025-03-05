@@ -1,5 +1,9 @@
 /* ===== Variables Globales ===== */
 :root {
+    /* Espaciado */
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    
     /* Colores principales */
     --primary-color: #2563eb;
     --primary-hover: #1d4ed8;
