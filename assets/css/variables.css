@@ -11,6 +11,15 @@
     --success-color: #10b981;
     --danger-color: #ef4444;
     --warning-color: #f59e0b;
+
+    /* Colores de fondo */
+    --blue-light: #dbeafe;
+    --yellow-badge: #fff8e6;
+    --red-badge: #fef2f2;
+    --bg-light: #f9fafb;
+    --border-color: #e5e7eb;
+    --text-dark: #374151;
+    --text-muted: #6b7280;
     
     /* Colores de texto y fondo */
     --text-color: #334155;
